@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.view.View;
 
 import com.charbgr.BlurNavigationDrawer.R;
 
@@ -71,6 +72,21 @@ public class BlurDrawerLayout extends DrawerLayout {
 
     public BlurDrawerLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+    }
+
+
+    @Override
+    public void openDrawer(final View drawerView) {
+
+        blurActionBarDrawerToggle.renderBeforeOpen();
+
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                BlurDrawerLayout.super.openDrawer(drawerView);
+            }
+        }, 50);
+
     }
 
     public BlurActionBarDrawerToggle getBlurActionBarDrawerToggle() {
