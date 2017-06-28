@@ -148,6 +148,10 @@ public class BlurActionBarDrawerToggle extends ActionBarDrawerToggle {
         }
     }
 
+    void renderBeforeOpen() {
+        prepareToRender = true;
+        render();
+    }
     /**
      * Snapshots the specified layout and scale it using scaleBitmap() function
      * then we blur the scaled bitmap with the preferred blur radius.
